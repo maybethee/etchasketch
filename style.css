@@ -1,0 +1,71 @@
+body {
+  display: flex;
+  flex-flow: row wrap;
+  flex: auto;
+  height: 100%;
+  align-items: center;
+  gap: 5px;
+}
+
+.sidebar {
+  display: flex;
+  flex-flow: column;
+  flex: 1 1 0;
+  height: 100%;
+  align-items: stretch;
+  align-items: center;
+  gap: 5px;
+  background-color: white;
+}
+
+#sideMessage {
+  flex: auto;
+  height: 100%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.content {
+  display: flex;
+  flex-flow: column;
+  flex: 3 1 0;
+  align-items: center;
+  gap: 5px;
+}
+
+button {
+  margin-top: 50px;
+  width: 250px;
+  height: 75px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  border: solid;
+  border-width: 4px;
+  border-color: black;
+  border-radius: 5px;
+  justify-content: flex-end;
+  background-color: palegreen;
+}
+
+.canvas {
+  margin: 50px;
+  border-style: solid;
+  border-radius: 20px;
+  border-width: 25px;
+  border-color: fuchsia;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.pixel {
+  background-color: white;
+  height: 64px;
+  width: 64px;
+}
+
+.pixelColor {
+  background-color: black;
+  /* figure out how to make random rgb on every hover? */
+}
