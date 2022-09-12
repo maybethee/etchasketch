@@ -54,13 +54,13 @@ button {
   border-style: solid;
   border-radius: 20px;
   border-width: 25px;
-  border-color: fuchsia;
+  border-color: rgb(213, 50, 123);
   display: flex;
   flex-flow: wrap;
 }
 
 .pixel {
-  background-color: white;
+  background-color: grey;
   height: 64px;
   width: 64px;
 }
@@ -68,4 +68,8 @@ button {
 .pixelColor {
   background-color: black;
   /* figure out how to make random rgb on every hover? */
+}
+
+.pixelRainbow {
+  background-color: grey;;
 }
