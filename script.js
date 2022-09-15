@@ -1,19 +1,17 @@
-
 let canvas = document.querySelector('#canvasContainer');
 const rainbow = document.querySelector('#btnRainbow');
+const btnArea = document.querySelector('#btnArea');
 
 
-let str = '';
 const canvasArea = 1024;
 canvas.style.height = canvasArea + 'px';
 canvas.style.width = canvasArea + 'px';
 
-
-let area = getCanvasArea();
-let pixelDimension = findDimensions(getCanvasArea); 
-console.log(area, pixelDimension);
+let area = 0;
+let pixelDimension = 0; 
 
 
+// converts user's number to an integer
 function isPositiveInteger(str) {
   if (typeof str !== 'string') {
     return false;
@@ -25,74 +23,138 @@ function isPositiveInteger(str) {
     return true;
   }
 
-  return false;
+ return false;
 }
 
-// function that finds the required height/width size of interior divs
-function findDimensions(getCanvasArea) {
+// calculates the height/width of canvas pixels based on chosen size
+const findDimensions = function findDimensions() {
 
-  let pixelDimension = canvasArea / area;
+  pixelDimension = canvasArea / area;
   return pixelDimension;
 }
 
-// gets desired pixel area by using a prompt to ask for the canvas "size"
-function getCanvasArea() {
+// initialize the canvas size based on user input
+const getCanvasArea = btnArea.addEventListener('click', function getCanvasArea() {
 
-  let area = prompt('enter size:', '16');
+  while (canvas.firstChild) {
+    canvas.removeChild(canvas.lastChild);
+  }
+  
+  area = prompt('enter size:', '16');
+
   if (isPositiveInteger(area)) {
-    // find pixel amount
 
-    return area = Math.round(area) ;
-  }
-  return area = 16;
-}
+    // find total pixel amount
+    area = Math.round(area);
 
-
-function setCanvasPixels() {
-
-  for (let i = 0; i < (area * area); i++) {
-
-    const divs = document.createElement('div');
-    canvas.appendChild(divs);
-    divs.classList.add('pixel');
-  }
-}
-
-// function to add rainbow option attached to button
-const makeRainbow = () => {
-
-  rainbow.addEventListener('click', function() {
+    findDimensions();
     
-    divs.forEach(div => {
+    for (let i = 0; i < (area * area); i++) {
 
-      div.addEventListener('mouseover', function() {
-        
-        // alter class for the new mouseover event to use
-        div.setAttribute('class', 'pixelRainbow');
-        const randomColor = Math.floor(Math.random()*16777215).toString(16);
-        div.style.backgroundColor = "#" + randomColor;
-      
+      const divs = document.createElement('div');
+      canvas.appendChild(divs);
+      divs.classList.add('pixel');
+
+    }
+    
+    hoverPixel();
+  } else {
+
+    area = 16;
+    console.log(area);
+
+    findDimensions();
+
+    for (let i = 0; i < (area * area); i++) {
+
+      const divs = document.createElement('div');
+      canvas.appendChild(divs);
+      divs.classList.add('pixel');
+
+    }
+    hoverPixel();
+  }
+})
+
+// event listener for basic mouse hover functionality
+const hoverPixel = () => {
+  const divs = document.querySelectorAll('.pixel');
+
+  divs.forEach(div => {
+  
+    div.style.width = pixelDimension + 'px';
+    div.style.height = pixelDimension + 'px';
+    
+    div.addEventListener('mouseover', () => {
+  
+      // div.setAttribute('class', 'pixelColor');
+      div.style.backgroundColor = "#000000";
     })
   })
-})
 }
 
-// sets pixels sized correctly according to prompt input
-setCanvasPixels();
+const makeGone = btnClear.addEventListener('click', function makeGone() {
+  area;
 
-// rainbow function
-makeRainbow();
+  const divs = document.querySelectorAll('.pixel,.pixelColor,.pixelRainbow');
+  
+  divs.forEach(div => {
+    
+  if (div.classList.contains('pixelRainbow')) {
+    // do makeRainbow to reset class and maintain function
+    div.style.backgroundColor = "#808080";
 
-const divs = document.querySelectorAll('.pixel');
+    div.addEventListener('mouseover', () => {
+  
+      // alter class for the new mouseover event to use
+      const randomColor = Math.floor(Math.random()*16777215).toString(16);
+      div.style.backgroundColor = "#" + randomColor;
+    })
+  } else {
+    // do makeNormal to reset class and hover function
+    div.setAttribute('class', 'pixel');
+    div.style.backgroundColor = "#808080";
+
+    // alter class for the new mouseover event to use
+    div.addEventListener('mouseover', () => {
+  
+      div.style.backgroundColor = "#000000";
+  })
+  }
+})
+})
+
+// function to add rainbow option attached to button
+const makeRainbow = btnRainbow.addEventListener('click', function makeRainbow() {
+  const divs = document.querySelectorAll('.pixel,.pixelColor,.pixelRainbow');
+
+  divs.forEach(div => {
+
+    div.style.backgroundColor = "#808080";
+    div.setAttribute('class', 'pixelRainbow');
+
+    div.addEventListener('mouseover', () => {
+  
+      // alter class for the new mouseover event to use
+      const randomColor = Math.floor(Math.random()*16777215).toString(16);
+      div.style.backgroundColor = "#" + randomColor;
+})
+}) 
+})
+
+// button that chooses the normal black pen drawing tool
+const makeNormal = btnDefault.addEventListener('click', function makeNormal() {
+const divs = document.querySelectorAll('.pixel,.pixelColor,.pixelRainbow');
 
 divs.forEach(div => {
+  
+  div.setAttribute('class', 'pixel');
+  div.style.backgroundColor = "#808080";
 
-  div.style.width = pixelDimension + 'px';
-  div.style.height = pixelDimension + 'px';
-  
   div.addEventListener('mouseover', () => {
-    div.setAttribute('class', 'pixelColor');
-   
-  })
-  
+
+    div.style.backgroundColor = "#000000";
+
+})
+}) 
 })
