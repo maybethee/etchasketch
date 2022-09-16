@@ -1,52 +1,64 @@
+html { 
+  background: url(imgs/waves-wide.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 body {
   display: flex;
-  flex-flow: row wrap;
-  flex: auto;
+  flex-flow: row nowrap;
   height: 100%;
+  gap: 100px;
+  justify-content: flex-start;
   align-items: center;
-  gap: 5px;
+
 }
 
 .sidebar {
   display: flex;
   flex-flow: column;
-  flex: 1 1 0;
+  flex: 1 1 1;
   height: 100%;
-  align-items: stretch;
   align-items: center;
   gap: 5px;
-  background-color: white;
+  padding-left: 100px;
 }
 
 #sideMessage {
   flex: auto;
   height: 100%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 36px;
-  font-weight: 400;
+  color: rgb(49, 34, 51);
+  font-size: 40px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  margin-bottom: 80px;
+}
+
+button {
+  margin-top: 65px;
+  width: 300px;
+  height: 120px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: rgb(49, 34, 51);
+  border: solid;
+  border-width: 4px;
+  border-color: rgb(49, 34, 51);
+  border-radius: 20px;
+  justify-content: flex-end;
+  background-color: rgb(207, 124, 98);
 }
 
 .content {
   display: flex;
   flex-flow: column;
-  flex: 3 1 0;
+  flex: 1 1 1;
   align-items: center;
   gap: 5px;
-}
-
-button {
-  margin-top: 50px;
-  width: 250px;
-  height: 75px;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  font-size: 24px;
-  font-weight: 700;
-  border: solid;
-  border-width: 4px;
-  border-color: black;
-  border-radius: 5px;
-  justify-content: flex-end;
-  background-color: palegreen;
 }
 
 .canvas {
@@ -54,22 +66,21 @@ button {
   border-style: solid;
   border-radius: 20px;
   border-width: 25px;
-  border-color: rgb(213, 50, 123);
+  border-color: rgba(49, 34, 51, 0.85);
   display: flex;
   flex-flow: wrap;
 }
 
 .pixel {
-  background-color: grey;
+  background-color: #80808080;
   height: 64px;
   width: 64px;
 }
 
 .pixelColor {
-  background-color: black;
-  /* figure out how to make random rgb on every hover? */
+  background-color: hsla(0, 0%, 50%, 50%);
 }
 
 .pixelRainbow {
-  background-color: grey;;
+  background-color: hsla(0, 0%, 50%);
 }

@@ -59,7 +59,7 @@ const getCanvasArea = btnArea.addEventListener('click', function getCanvasArea()
     canvas.removeChild(canvas.lastChild);
   }
   
-  area = prompt('enter size:', '16');
+  area = prompt('Enter pixel size 1-100 (bigger number = smaller pixels):', '16');
 
   if (isPositiveInteger(area)) {
 
@@ -112,6 +112,7 @@ const hoverPixel = () => {
   })
 }
 
+// function to clear the board and keep whatever color was last chosen
 const makeGone = btnClear.addEventListener('click', function makeGone() {
   area;
 
@@ -121,7 +122,7 @@ const makeGone = btnClear.addEventListener('click', function makeGone() {
     
   if (div.classList.contains('pixelRainbow')) {
     // do makeRainbow to reset class and maintain function
-    div.style.backgroundColor = "#808080";
+    div.style.backgroundColor = "#80808080";
 
     div.addEventListener('mouseover', () => {
   
@@ -132,7 +133,7 @@ const makeGone = btnClear.addEventListener('click', function makeGone() {
   } else {
     // do makeNormal to reset class and hover function
     div.setAttribute('class', 'pixel');
-    div.style.backgroundColor = "#808080";
+    div.style.backgroundColor = "#80808080";
 
     // alter class for the new mouseover event to use
     div.addEventListener('mouseover', () => {
@@ -149,7 +150,7 @@ const makeRainbow = btnRainbow.addEventListener('click', function makeRainbow() 
 
   divs.forEach(div => {
 
-    div.style.backgroundColor = "#808080";
+    div.style.backgroundColor = "#80808080";
     div.setAttribute('class', 'pixelRainbow');
 
     div.addEventListener('mouseover', () => {
@@ -168,7 +169,7 @@ const divs = document.querySelectorAll('.pixel,.pixelColor,.pixelRainbow');
 divs.forEach(div => {
   
   div.setAttribute('class', 'pixel');
-  div.style.backgroundColor = "#808080";
+  div.style.backgroundColor = "#80808080";
 
   div.addEventListener('mouseover', () => {
 
