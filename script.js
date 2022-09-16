@@ -33,7 +33,26 @@ const findDimensions = function findDimensions() {
   return pixelDimension;
 }
 
-// initialize the canvas size based on user input
+// set initial canvas size to the default 16x16
+function setInitialCanvas() {
+  area = 16;
+
+  findDimensions();
+    
+  for (let i = 0; i < (area * area); i++) {
+
+    const divs = document.createElement('div');
+    canvas.appendChild(divs);
+    divs.classList.add('pixel');
+
+  }
+    
+  hoverPixel();
+}
+
+
+
+// set canvas size based on user input
 const getCanvasArea = btnArea.addEventListener('click', function getCanvasArea() {
 
   while (canvas.firstChild) {
@@ -158,3 +177,6 @@ divs.forEach(div => {
 })
 }) 
 })
+
+// execute default canvas on page load
+setInitialCanvas();
